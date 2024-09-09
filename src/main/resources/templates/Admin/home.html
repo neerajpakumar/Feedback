@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Feedbacks</title>
+</head>
+<style>
+	* {
+		padding: 0;
+		margin: 0;
+		font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+			Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+			sans-serif;
+		box-sizing: border-box;
+		text-decoration: none;
+	}
+
+	.navbar nav {
+		position: fixed;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		background-color: rgb(17, 7, 72);
+		height: 9vh;
+		padding: 0 20px;
+	}
+
+	.head {
+		color: white;
+	}
+
+	.navbar a {
+		color: white;
+		padding: 3px 6px;
+		border-radius: 3px;
+	}
+
+	.hero {
+		height: 700px;
+		padding: 10px 50px;
+		overflow-y: scroll;
+		background-color: rgb(5, 1, 53);
+	}
+
+	.hero::-webkit-scrollbar {
+		display: none;
+	}
+
+	.content {
+		margin-top: 10px;
+		width: 100%;
+		height: 260px;
+		background: #dbdbdb;
+		border-radius: 4px;
+		box-shadow: 3px 3px rgb(148, 143, 143);
+	}
+
+	.meet {
+		padding: 10px 50px;
+	}
+
+	.meet h3 {
+		margin: 10px 0px;
+	}
+
+	.btm {
+		margin-top: 10px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.duration a {
+		color: white;
+		padding: 4px 10px;
+		border-radius: 4px;
+	}
+
+	.purspse {
+		height: 80px;
+		overflow-y: scroll;
+	}
+
+	.purspse::-webkit-scrollbar {
+		display: none;
+	}
+
+	.logout {
+		background-color: red;
+	}
+
+	.duration a {
+		padding: 5px 8px;
+		border-radius: 4px;
+	}
+
+	.date {
+		color: chocolate;
+	}
+
+	.del {
+		background-color: rgb(255, 0, 0);
+	}
+
+	.up {
+		background-color: green;
+	}
+
+	.se {
+
+		margin-top: 80px;
+	}
+
+	.se input {
+		padding: 7px;
+		border-radius: 5px;
+	}
+
+	.se input[type="text"] {
+		font-size: 17px;
+		width: 59%;
+	}
+
+	.se input[type="submit"] {
+		width: 19.1%;
+		font-size: 17px;
+		background-color: rgb(0, 128, 255);
+		color: white;
+		width: 500;
+		border: none;
+	}
+	select{
+		font-size: 17px;
+		width: 19%;
+		padding: 7px;
+		width: 500;
+	}
+</style>
+
+<body>
+	<div class="container">
+		<div class="navbar">
+			<nav>
+				<div class="head">
+					<h1>FeedBacks</h1>
+				</div>
+				<div>
+					<a data-th-href="@{'/admin/home'}">Home</a>
+
+					<a data-th-href="@{'/admin/profile'}">Profile</a>
+					<a data-th-href="@{'/admin/allUser'}">See Users</a>
+					<a class="logout" data-th-href="@{'/logout'}">Logout</a>
+				</div>
+			</nav>
+		</div>
+
+		<div class="hero">
+
+			<div class="se">
+				<form data-th-action="@{/admin/getFeedback}" method="get">
+					<input name="name" required type="text" placeholder="Search user">
+					<select name="seacrh" id="">
+						<option value="subject">Subject</option>
+						<option value="roolNumber">RollNumber</option>
+					</select>
+					<input type="submit" value="Seacrh">
+				</form>
+			</div>
+
+
+			<div class="content" data-th-object="${apply}" data-th-each="apply : ${feed}">
+
+				<div class="meet">
+					<p>
+						Date : <span class="date" data-th-text="*{date}"></span>
+						<span></span>
+					</p>
+					<p>RollNumber: <span class="date" data-th-text="*{rollNumber}"></span></p>
+					<p>
+						Subject Name: <span class="date" data-th-text="*{Subject}"></span>
+					</p>
+					<p>
+						Tecaher Name: <span class="date" data-th-text="*{teacher}"></span>
+					</p>
+					<hr />
+					<p class="purspse" data-th-text="*{Feedback}"></p>
+					<hr />
+					<div class="btm">
+						<div class="duration">
+							<a data-th-href="@{'/admin/delete/'+*{feedbackId}}" class="del">Delete</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</body>
+
+</html>

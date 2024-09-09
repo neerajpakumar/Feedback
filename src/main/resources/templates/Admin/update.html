@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feedbacks</title>
+  </head>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif;
+      box-sizing: border-box;
+      text-decoration: none;
+    }
+
+    .navbar nav {
+      position: fixed;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      background-color: rgb(17, 7, 72);
+      height: 9vh;
+      padding: 0 20px;
+    }
+
+    .head {
+      color: white;
+    }
+
+    .navbar a {
+      color: white;
+      padding: 3px 6px;
+      border-radius: 3px;
+    }
+
+    .hero {
+      height: 650px;
+      padding: 10px 50px;
+      overflow-y: scroll;
+      background-color: rgb(5, 1, 53);
+    }
+
+    .hero::-webkit-scrollbar {
+      display: none;
+    }
+
+    .content {
+	
+      margin-top: 60px;
+      width: 100%;
+      height: 200px;
+      background: #dbdbdb;
+      border-radius: 4px;
+      box-shadow: 3px 3px rgb(148, 143, 143);
+    }
+
+    .meet {
+      padding: 10px 50px;
+    }
+
+    .meet h3 {
+      margin: 10px 0px;
+    }
+
+    .btm {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .duration a {
+      color: white;
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    .purspse {
+      height: 80px;
+      overflow-y: scroll;
+    }
+
+    .purspse::-webkit-scrollbar {
+      display: none;
+    }
+
+    .logout {
+      background-color: red;
+    }
+
+    .duration a {
+      padding: 5px 8px;
+      border-radius: 4px;
+    }
+
+    .date {
+      color: chocolate;
+    }
+
+    .del {
+      background-color: rgb(255, 0, 0);
+    }
+
+    .up {
+      background-color: green;
+    }	
+    /* Reset some default styles */
+    table, th, td {
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    /* Apply basic styling to the body */
+    /* Container styling */
+    .container {
+      height: 90%;
+      max-width: 90%;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      overflow-y: scroll;
+      scroll-behavior: smooth;
+    }
+
+    /* Heading styling */
+    .container h1 {
+      font-size: 24px;
+    }
+
+    /* Table styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    /* Table header styling */
+    th {
+      border-radius: 1px;
+      background-color: #007bff;
+      color: white;
+      padding: 10px;
+      text-align: left;
+    }
+
+    /* Table cell styling */
+    td {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+    .as a {
+      padding: 0 10px;
+    }
+    .up {
+      color: #007bff;
+    }
+    .del {
+      color: red;
+    }
+    /* Table row hover effect */
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #ddd;
+    }
+
+    .abc p {
+      color: green;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .abc {
+      background-color: lightgreen;
+    }
+
+    .abab {
+      padding-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .se {
+      padding-left: 20px;
+    }
+
+    .se input {
+      font-size: 17px;
+      border-radius: 4px;
+    }
+    .se input[type="submit"] {
+      background: #007bff;
+      border-radius: 5px;
+      color: white;
+      width: 550;
+      padding: 2px 10px;
+      border: none;
+    }
+    #content{
+	height: 600px;
+	margin-top: 60px;
+    }
+  </style>
+
+  <body>
+    <div class="containers">
+      <div class="navbar">
+        <nav>
+          <div class="head">
+            <h1>FeedBacks</h1>
+          </div>
+          <div>
+            <a data-th-href="@{'/admin/home'}">Home</a>
+            <a data-th-href="@{'/admin/home'}">View Users</a>
+            <a data-th-href="@{'/admin/home'}">Profile</a>
+            <a class="logout" data-th-href="@{'/logout'}">Logout</a>
+          </div>
+        </nav>
+      </div>
+
+      <div class="hero">
+        <div id="content">
+          <div class="container">
+           
+            <div class="abab">
+              <div>
+                <h1>Users</h1>
+              </div>
+              
+            </div>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>User Id</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>DOB</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-th-object="${cat}" data-th-each="cat: ${feed}">
+                  <td data-th-text="*{userId}"></td>
+                  <td data-th-text="*{name}"></td>
+                  <td data-th-text="*{email}"></td>
+                  <td data-th-text="*{phone}"></td>
+
+
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

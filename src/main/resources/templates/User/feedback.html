@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Student Feedback Form</title>
+</head>
+<style>
+	body {
+		font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+		background-color: #01063f;
+		margin: 0;
+		padding: 0;
+
+		height: 100vh;
+	}
+
+	.container {
+		margin-top: 75px;
+		background-color: #fff;
+		padding: 20px;
+		border-radius: 8px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		width: 100%;
+		max-width: 600px;
+	}
+
+	h1 {
+		margin-bottom: 20px;
+		font-size: 24px;
+		text-align: center;
+	}
+
+	.form-group {
+		margin-bottom: 15px;
+	}
+
+	label {
+		display: block;
+		margin-bottom: 5px;
+	}
+
+	input[type="text"],
+	input[type="email"],
+	select,
+	textarea {
+		width: 100%;
+		padding: 10px;
+		border: 1px solid #ddd;
+		border-radius: 4px;
+		box-sizing: border-box;
+	}
+
+	textarea {
+		resize: vertical;
+	}
+
+	button {
+		background-color: #007bff;
+		color: #fff;
+		border: none;
+		padding: 10px 15px;
+		border-radius: 4px;
+		cursor: pointer;
+		font-size: 16px;
+		width: 100%;
+	}
+
+	button:hover {
+		background-color: #0056b3;
+	}
+
+	/* Reset some default styling */
+	li {
+		list-style: none;
+	}
+
+	p {
+		text-align: center;
+		width: 500;
+		color: green;
+	}
+
+	/* Navbar styling */
+
+
+	.navbar-menu {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.navbar-item {
+		margin: 0 10px;
+	}
+
+	.navbar-link {
+		text-decoration: none;
+		color: #fff;
+		font-size: 18px;
+		transition: color 0.3s;
+	}
+
+	.navbar-link:hover {
+		color: #ddd;
+	}
+
+	.body {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	header {
+		position: fixed;
+		color: white;
+		width: 100%;
+		height: 55px;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+	}
+
+	.logout {
+		background-color: red;
+		border: darkred;
+		padding: 4px 8px;
+		border-radius: 4px;
+	}
+
+	.abc {
+		background-color: rgb(128, 255, 128);
+		width: 100%;
+		height: 30px;
+		border-radius: 4px;
+	}
+
+	.aba {
+		margin-top: 150px;
+		color: white;
+	}
+</style>
+
+<body>
+	<header>
+		<div class="heda">
+			<h1>Feedback Collection System</h1>
+		</div>
+		<nav class="navbar">
+			<ul class="navbar-menu">
+
+				<li class="navbar-item">
+					<a data-th-href="@{/user/home}" class="navbar-link">FeedBack</a>
+				</li>
+
+				<!--	<li class="navbar-item">
+					<a data-th-href="@{/user/about}"  class="navbar-link">About</a>
+				</li>-->
+				<li class="navbar-item">
+					<a data-th-href="@{/user/profile}" class="navbar-link">Profile</a>
+				</li>
+
+				<li class="navbar-items">
+					<a href="/logout" class="navbar-link logout">Logout</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+
+	<div class="body">
+
+
+
+		<div class="aba">
+			<div class="an">
+				<h1>
+					Thank you for submiting FeedBack
+				</h1>
+				<p>We value your feedback! Your know your thoughts.</p>
+			</div>
+		</div>
+
+	</div>
+</body>
+
+</html>
